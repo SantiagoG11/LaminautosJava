@@ -4,11 +4,17 @@
  */
 package com.mycompany.laminautosjava;
 
+import static com.mycompany.laminautosjava.VehiculoUsado.estadosVehiculoU;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author mons
  */
 public class VehiculoNuevo extends Vehiculo {
+    public static final List<String> estadosVehiculoN = Arrays.asList("Para la venta", "En revision");
+    
     public int id_nuevo;
     public double valorCompra;
     public double valorVenta;
@@ -16,10 +22,14 @@ public class VehiculoNuevo extends Vehiculo {
 
     // Constructor
     public VehiculoNuevo(int id_nuevo, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, double valorCompra, double valorVenta, String estado) {
-        super(id_nuevo, marca, modelo, color, cilindraje, num_llantas, anio);
+        super(id_nuevo, marca, modelo, color, cilindraje, num_llantas, anio, estado);
         this.valorCompra = valorCompra;
         this.valorVenta = valorVenta;
-        this.estado = estado;
+        if (estadosVehiculoN.contains(estado)) {
+            this.estado = estado;
+        } else {
+            System.out.println("Estado no válido");
+        }
     }
 
     public void leerNuevo() {
@@ -31,7 +41,7 @@ public class VehiculoNuevo extends Vehiculo {
         System.out.println("Cilindraje: " + cilindraje);
         System.out.println("Número de llantas: " + num_llantas);
         System.out.println("Año: " + anio);
-        System.out.println("Valor de compra: $" + valorCompra);
+        //System.out.println("Valor de compra: $" + valorCompra);
         System.out.println("Valor de venta: $"+ valorVenta);
         System.out.println("Estado: " + estado);
         System.out.println("----------------------------------------");
@@ -107,7 +117,11 @@ public class VehiculoNuevo extends Vehiculo {
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+        if (estadosVehiculoN.contains(estado)) {
+            this.estado = estado;
+        } else {
+            System.out.println("Estado no válido");
+        }
     }
     
     public double calcularValorVenta() {

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class VehiculoUsado extends Vehiculo {
-    public static final List<String> estadosVehiculo = Arrays.asList("Para la venta", "En reparacion");
+    public static final List<String> estadosVehiculoU = Arrays.asList("Para la venta", "En reparacion");
 
     public int id_usado;
     public int kilometraje;
@@ -25,13 +25,13 @@ public class VehiculoUsado extends Vehiculo {
 
     // Constructor
     public VehiculoUsado(int id_usado, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, int kilometraje, int siniestros, double valorComercial, double valorCompra, double valorVenta, String estado) {
-        super(id_usado, marca, modelo, color, cilindraje, num_llantas, anio);
+        super(id_usado, marca, modelo, color, cilindraje, num_llantas, anio, estado);
         this.kilometraje = kilometraje;
         this.siniestros = siniestros;
         this.valorComercial = valorComercial;
         this.valorCompra = valorCompra;
         this.valorVenta = valorVenta;
-        if (estadosVehiculo.contains(estado)) {
+        if (estadosVehiculoU.contains(estado)) {
             this.estado = estado;
         } else {
             System.out.println("Estado no válido");
@@ -49,23 +49,13 @@ public class VehiculoUsado extends Vehiculo {
         System.out.println("Año: " + anio);
         System.out.println("Kilometraje: " + kilometraje);
         System.out.println("Siniestros: " + siniestros);
-        System.out.println("Valor comercial: $" + valorComercial);
-        System.out.println("Valor de compra: $" + valorCompra);
+        //System.out.println("Valor comercial: $" + valorComercial);
+        //System.out.println("Valor de compra: $" + valorCompra);
         System.out.println("Valor de venta: $" + valorVenta);
         System.out.println("Estado: " + estado);
         System.out.println("----------------------------------------");
     }
 
-    public void actualizarEstadoVehiculo() {
-        System.out.println("* Seleccione el estado del vehículo *");
-        System.out.println("1. Para la venta");
-        System.out.println("2. En reparación");
-        
-        System.out.println("Opción no válida.");
-    }
-    
-    
-    
     public double calcularValorVenta() {
         double valorVenta = 1.35 *  valorCompra;
 
@@ -179,7 +169,7 @@ public class VehiculoUsado extends Vehiculo {
     }
 
     public void setEstado(String estado) {
-        if (estadosVehiculo.contains(estado)) {
+        if (estadosVehiculoU.contains(estado)) {
             this.estado = estado;
         } else {
             System.out.println("Estado no válido");

@@ -4,11 +4,16 @@
  */
 package com.mycompany.laminautosjava;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author mons
  */
 public class Vehiculo {
+    public static final List<String> estadosVehiculo = Arrays.asList("Optimo", "En reparacion");
+    
     public  int id_vehiculo;
     public String marca;
     public String modelo;
@@ -16,9 +21,10 @@ public class Vehiculo {
     public int cilindraje;
     public int num_llantas;
     public int anio;
+    public String estado;
     
     // Constructor
-    public Vehiculo(int id_vehiculo, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio) {
+    public Vehiculo(int id_vehiculo, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, String estado) {
         this.id_vehiculo = id_vehiculo;
         this.marca = marca;
         this.modelo = modelo;
@@ -26,6 +32,11 @@ public class Vehiculo {
         this.cilindraje = cilindraje;
         this.num_llantas = num_llantas;
         this.anio = anio;
+        if (estadosVehiculo.contains(estado)) {
+            this.estado = estado;
+        } else {
+            System.out.println("Estado no válido");
+        }
     }
     
     // Ver vehiculo
@@ -97,4 +108,17 @@ public class Vehiculo {
     public void setAnio(int anio) {
         this.anio = anio;
     }
+    
+    public String getEstado() {
+        return estado;
+    }
+    
+    public void setEstado(String estado) {
+        if (estadosVehiculo.contains(estado)) {
+            this.estado = estado;
+        } else {
+            System.out.println("Estado no válido");
+        }
+    }
+
 }

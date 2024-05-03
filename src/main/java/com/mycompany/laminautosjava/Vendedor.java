@@ -17,7 +17,7 @@ public class Vendedor extends Persona {
         super(id_vendedor, nombre, num_ident, num_contacto, direccion);
     }
 
-    public void leerNuevo() {
+    public void leerVendedor() {
         System.out.println("----------------------------------------");
         System.out.println("Detalles de vendedor...");
         System.out.println("Identificador de la empresa: "+ id_vendedor);

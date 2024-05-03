@@ -23,20 +23,16 @@ public class Menus {
 
     public static void menuIngresarVehiculos() {
         System.out.println("- Ingreso de vehiculos -");
-        System.out.println("1. Ingresar automovil nuevo");
-        System.out.println("2. Ingresar automovil usado");
-        System.out.println("3. Ingresar moto nueva");
-        System.out.println("4. Ingresar moto usada");
-        System.out.println("5. Volver");
+        System.out.println("1. Ingresar vehiculo nuevo");
+        System.out.println("2. Ingresar vehiculo usado");
+        System.out.println("3. Volver");
     }
 
     public static void menuConsultaVehiculos() {
         System.out.println("- Busqueda vehiculos -");
-        System.out.println("1. Buscar automovil nuevo");
-        System.out.println("2. Buscar automovil usado");
-        System.out.println("3. Buscar moto nueva");
-        System.out.println("4. Buscar moto usada");
-        System.out.println("5. Volver");
+        System.out.println("1. Buscar vehiculo nuevo");
+        System.out.println("2. Buscar vehiculo usado");
+        System.out.println("3. Volver");
     }
 
     public static void menuIngresarUsuarios() {
@@ -58,20 +54,22 @@ public class Menus {
 
     public static void menuVentas() {
         System.out.println("- Ventas -");
-        System.out.println("1. Vender auto nuevo");
-        System.out.println("2. Vender auto usado");
-        System.out.println("3. Vender moto nueva");
-        System.out.println("4. Vender moto usada");
-        System.out.println("5. Volver");
+        System.out.println("1. Vender vehiculo nuevo");
+        System.out.println("2. Vender vehiculo usado");
+        System.out.println("3. Volver");
+    }
+    
+    public static void menuOrdenesS() {
+        System.out.println("- Ordenes de servicio -");
+        System.out.println("1. Generar orden");
+        System.out.println("2. Ver orden");
+        System.out.println("3. Consultar reparaciones");
+        System.out.println("4. Volver");
     }
 
     public static void menuReparaciones() {
         System.out.println("- Reparaciones -");
-        System.out.println("1. Reparar auto nuevo");
-        System.out.println("2. Reparar auto usado");
-        System.out.println("3. Reparar moto nueva");
-        System.out.println("4. Reparar moto usada");
-        System.out.println("5. Volver");
+        System.out.println("1. Ver estado de reparacion de su vehiculo");
+        System.out.println("2. Volver");
     }
 }
-

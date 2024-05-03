@@ -23,8 +23,8 @@ public class OrdenDeServicio {
     }
 
     public void verOrden() {
-        System.out.println("Identificador del cliente: " + cliente.getIdCliente());
-        System.out.println("Identificador del vehículo: " + vehiculo.getIdVehiculo());
+        System.out.println("Cliente: " + cliente.getNombre());
+        System.out.println("Vehículo: " + vehiculo.getModelo());
         System.out.println("Descripción del problema: " + descripcion_problema);
     }
 
