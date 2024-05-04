@@ -9,15 +9,13 @@ package com.mycompany.laminautosjava;
  * @author mons
  */
 public class Persona {
-    public int id_persona;
     public String nombre;
     public int num_ident;
     public int num_contacto;
     public String direccion;
     
     // Constructor
-    public Persona(int id_persona, String nombre, int num_ident, int num_contacto, String direccion) {
-        this.id_persona = id_persona;
+    public Persona(String nombre, int num_ident, int num_contacto, String direccion) {
         this.nombre = nombre;
         this.num_ident  = num_ident;
         this.num_contacto = num_contacto;
@@ -36,6 +34,7 @@ public class Persona {
     }
     
     // Getters y setters
+    /*
     public int getIdPersona() {
         return id_persona;
     }
@@ -43,7 +42,7 @@ public class Persona {
     public void setIdPersona(int id_persona) {
         this.id_persona = id_persona;
     }
-
+    */
     public String getNombre() {
         return nombre;
     }

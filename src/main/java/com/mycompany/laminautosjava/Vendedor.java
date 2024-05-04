@@ -14,7 +14,8 @@ public class Vendedor extends Persona {
     
     // Constructor
     public Vendedor(int id_vendedor, String nombre, int num_ident, int num_contacto, String direccion) {
-        super(id_vendedor, nombre, num_ident, num_contacto, direccion);
+        super(nombre, num_ident, num_contacto, direccion);
+        this.id_vendedor = id_vendedor;
     }
 
     public void leerVendedor() {

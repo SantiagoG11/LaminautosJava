@@ -27,10 +27,9 @@ public class VehiculoNuevo extends Vehiculo {
         this.valorVenta = valorVenta;
         if (estadosVehiculoN.contains(estado)) {
             this.estado = estado;
-        } else {
-            System.out.println("Estado no válido");
         }
     }
+ 
 
     public void leerNuevo() {
         System.out.println("----------------------------------------");

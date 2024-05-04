@@ -10,73 +10,26 @@ package com.mycompany.laminautosjava;
  *
  * @author mons
  */
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 public class LaminautosJava {
     
     // LISTAS PARA ALMACENAR OBJETOS
-        public static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
-        public static ArrayList<VehiculoNuevo> vehiculosNuevos = new ArrayList<>();
-        public static ArrayList<VehiculoUsado> vehiculosUsados = new ArrayList<>();
-        public static ArrayList<Vendedor> vendedores = new ArrayList<>();
-        public static ArrayList<Cliente> clientes = new ArrayList<>();
-        public static ArrayList<Propietario> propietarios = new ArrayList<>();
-        public static ArrayList<Mecanico> mecanicos = new ArrayList<>();
-        public static ArrayList<OrdenDeServicio> ordenes_servicio = new ArrayList<>();
-        public static ArrayList<Reparacion> reparaciones = new ArrayList<>();
+    public static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+    public static ArrayList<VehiculoNuevo> vehiculosNuevos = new ArrayList<>();
+    public static ArrayList<VehiculoUsado> vehiculosUsados = new ArrayList<>();
+    public static ArrayList<Vendedor> vendedores = new ArrayList<>();
+    public static ArrayList<Cliente> clientes = new ArrayList<>();
+    public static ArrayList<Propietario> propietarios = new ArrayList<>();
+    public static ArrayList<Mecanico> mecanicos = new ArrayList<>();
+    public static ArrayList<OrdenDeServicio> ordenes_servicio = new ArrayList<>();
+    public static ArrayList<Reparacion> reparaciones = new ArrayList<>();
     
-    public static void main(String[] args) {
-            
-        
-        
-        // OBJETOS QUEMADOS
-        Vehiculo vehiculo1 = new Vehiculo(101, "Chevrolet", "Aveo", "Morado mate", 1600, 4, 2020, "Optimo");
-        Vehiculo vehiculo2 = new Vehiculo(102, "Renol", "Koleos", "Blanco", 2000, 4, 2022, "Optimo");
-        
-        VehiculoNuevo vehiculoN1 = new VehiculoNuevo(1, "Mazda", "CX-30", "Gris", 2000, 4, 2024, 90000000, 95000000, "Para la venta");
-        VehiculoNuevo vehiculoN2 = new VehiculoNuevo(2, "BMW", "420-sport", "Blanco", 2500, 4, 2023, 100000000, 150000000, "Para la venta");
-        
-        VehiculoUsado vehiculoU1 = new VehiculoUsado(10, "Kia", "Sportage", "Blanco mate", 2000, 4, 2015, 50000, 2, 55.000000, 56.000000, 60.000000,"Para la venta");
-        VehiculoUsado vehiculoU2 = new VehiculoUsado(11, "Jeep", "Willys", "Rojo", 1800, 4, 2010, 90000, 1, 40.000000, 41.000000, 48.000000,"Para la venta");
-        
-        Cliente cliente1 = new Cliente(1, "Andrea Arias", 10985421, 323381475, "Cra 12#50-30", 2);
-        Cliente cliente2 = new Cliente(2, "Cristian Garcia", 10983541, 311838453, "Cra 50#3-21", 1);
-        
-        Vendedor vendedor1 = new Vendedor(10, "Felipe Torres", 2514036, 304569841, "Avenida 15#43-23");
-        Vendedor vendedor2 = new Vendedor(11, "Daniela Lopez", 1098229, 311828637, "Calle falsa#123");
-        
-        Propietario propietario1 = new Propietario(15, "Gabriel Diaz", 251565, 320158634, "Cra 34#1-23");
-        Propietario propietario2 = new Propietario(16, "Margarita Aguirre", 10256341, 325684172, "Calle 37#45-4");
-        
-        Mecanico mecanico1 = new Mecanico(1, "Donchi", 2641562, 321458614, "Hotel Karras", "Latonero", "Libre");
-        Mecanico mecanico2 = new Mecanico(2, "Armando Casas", 25478115, 313589255, "Avenida caracas 50-23", "Pintor", "Libre");
-        Mecanico mecanico3 = new Mecanico(3, "Gunter Gaviria", 109455872, 311489657, "Cra 30#45-16", "Ensamblador", "Libre");
-        
-        OrdenDeServicio orden1 = new OrdenDeServicio(1, cliente1, vehiculo1, "Choque lateral");
-        OrdenDeServicio orden2 = new OrdenDeServicio(2, cliente2, vehiculo2, "Falla de motor");
-        
-        vehiculos.add(vehiculo1);
-        vehiculos.add(vehiculo2);
-        vehiculosNuevos.add(vehiculoN1);
-        vehiculosNuevos.add(vehiculoN2);
-        vehiculosUsados.add(vehiculoU1);
-        vehiculosUsados.add(vehiculoU2);
-        clientes.add(cliente1);
-        clientes.add(cliente2);
-        vendedores.add(vendedor1);
-        vendedores.add(vendedor2);
-        propietarios.add(propietario1);
-        propietarios.add(propietario2);
-        mecanicos.add(mecanico1);
-        mecanicos.add(mecanico2);
-        mecanicos.add(mecanico3);
-        ordenes_servicio.add(order1);
-        ordenes_servicio.add(order2);
-        
-        // FUNCION
-        public static boolean asignarOrdenServicioMecanico(OrdenDeServicio ordenServicio, List<Mecanico> mecanicos) {
+    // FUNCIONES
+    public static boolean asignarOrdenServicioMecanico(OrdenDeServicio ordenServicio, List<Mecanico> mecanicos) {
         for (Mecanico mecanico : mecanicos) {
             if (mecanico.getEstado().equals("Libre")) {
                 mecanico.tomarOrdenServicio(ordenServicio);
@@ -86,22 +39,86 @@ public class LaminautosJava {
         System.out.println("No hay mecánicos disponibles en este momento.");
         return false;
     }
+         
         
+        
+    public static void main(String[] args) {
+            
+        
+        
+        // OBJETOS QUEMADOS
+        Cliente cliente1 = new Cliente(1, "Andrea Arias", 10985421, 323381475, "Cra 12#50-30", 2);
+        Cliente cliente2 = new Cliente(2, "Cristian Garcia", 10983541, 311838453, "Cra 50#3-21", 1);
+        
+        Vehiculo vehiculo1 = new Vehiculo(101, "Chevrolet", "Aveo", "Morado mate", 1600, 4, 2020, "Optimo");
+        Vehiculo vehiculo2 = new Vehiculo(102, "Renol", "Koleos", "Blanco", 2000, 4, 2022, "Optimo");
+        Vehiculo vehiculo3 = new Vehiculo(103, "Mercedes", "Amg line", "Blanco", 1800, 4, 2023, "Optimo");
+        
+        VehiculoNuevo vehiculoN1 = new VehiculoNuevo(50, "Mazda", "CX-30", "Gris", 2000, 4, 2024, 90000000, 95000000, "Para la venta");
+        VehiculoNuevo vehiculoN2 = new VehiculoNuevo(2, "BMW", "420-sport", "Blanco", 2500, 4, 2023, 100000000, 150000000, "Para la venta");
+        
+        Propietario propietario1 = new Propietario(15, "Gabriel Diaz", 251565, 320158634, "Cra 34#1-23");
+        Propietario propietario2 = new Propietario(16, "Margarita Aguirre", 10256341, 325684172, "Calle 37#45-4");        
+        
+        VehiculoUsado vehiculoU1 = new VehiculoUsado(10, "Kia", "Sportage", "Blanco mate", 2000, 4, 2015, 50000, 2, 55.000000, 56.000000, propietario1, 60.000000,"Para la venta");
+        VehiculoUsado vehiculoU2 = new VehiculoUsado(11, "Jeep", "Willys", "Rojo", 1800, 4, 2010, 90000, 1, 40.000000, 41.000000, propietario2, 48.000000,"Para la venta");
+             
+        Vendedor vendedor1 = new Vendedor(10, "Felipe Torres", 2514036, 304569841, "Avenida 15#43-23");
+        Vendedor vendedor2 = new Vendedor(11, "Daniela Lopez", 1098229, 311828637, "Calle falsa#123");       
+                
+        Mecanico mecanico1 = new Mecanico(1, "Donchi", 2641562, 321458614, "Hotel Karras", "Latonero", "Libre");
+        Mecanico mecanico2 = new Mecanico(2, "Armando Casas", 25478115, 313589255, "Avenida caracas 50-23", "Pintor", "Libre");
+        Mecanico mecanico3 = new Mecanico(3, "Gunter Gaviria", 109455872, 311489657, "Cra 30#45-16", "Ensamblador", "Libre");
+        
+        OrdenDeServicio orden1 = new OrdenDeServicio(1, cliente1, vehiculo1, "Choque lateral");
+        OrdenDeServicio orden2 = new OrdenDeServicio(2, cliente2, vehiculo2, "Falla de motor");
+        OrdenDeServicio orden3 = new OrdenDeServicio(3, cliente2, vehiculo3, "Daño en la direccion");
+        
+        Reparacion reparacion1 = new Reparacion(20, orden3);
+        
+        clientes.add(cliente1);
+        clientes.add(cliente2);
+        vehiculos.add(vehiculo1);
+        vehiculos.add(vehiculo2);
+        vehiculos.add(vehiculo3);
+        vehiculosNuevos.add(vehiculoN1);
+        vehiculosNuevos.add(vehiculoN2);
+        vehiculosUsados.add(vehiculoU1);
+        vehiculosUsados.add(vehiculoU2);
+        vendedores.add(vendedor1);
+        vendedores.add(vendedor2);
+        propietarios.add(propietario1);
+        propietarios.add(propietario2);
+        mecanicos.add(mecanico1);
+        mecanicos.add(mecanico2);
+        mecanicos.add(mecanico3);
+        ordenes_servicio.add(orden1);
+        ordenes_servicio.add(orden2);
+        ordenes_servicio.add(orden3);
+        reparaciones.add(reparacion1);
+        
+       for (int i = 0; i < vehiculosNuevos.size(); i++) {
+            // Obtén el objeto en la posición actual
+            VehiculoNuevo vehiculoN = vehiculosNuevos.get(i);
+            
+            System.out.println(vehiculoN.getMarca());
+        }
         
         Scanner scanner = new Scanner(System.in);
-        
         while(true) {
             // Menú principal
             Menus.mainMenu();
-            System.out.println("Opcion: ");
+            System.out.print("Opcion: ");
             int opcionPrincipal = scanner.nextInt();
-
+            scanner.nextLine(); // Consumir el carácter de nueva línea
             if (opcionPrincipal == 1) {
                 while(true) {
                     Menus.menuIngresarVehiculos();
-                    System.out.println("Opcion: ");
+                    System.out.print("Opcion: ");
+                    
                     int opcion1 = scanner.nextInt();
-
+                    scanner.nextLine();
+                    
                     if (opcion1 == 1) {
                         System.out.println("- Ingreso vehiculo nuevo -");
                         System.out.print("Identificador del vehiculo: ");
@@ -122,7 +139,25 @@ public class LaminautosJava {
                         double valor_compra = Double.parseDouble(scanner.nextLine());
                         System.out.print("Valor de venta a clientes: ");
                         double valor_venta = Double.parseDouble(scanner.nextLine());
-                        VehiculoNuevo vehiculoN = new VehiculoNuevo(id, marca, modelo, color, cilindraje, num_llantas, anio, valor_compra, valor_venta, "Para la venta");
+                        
+                        System.out.println("- Estado del vehiculo -");
+                        System.out.println("1. Para la venta");
+                        System.out.println("2. En revision");
+                        System.out.print("Opción: ");
+                        int opcionEst = scanner.nextInt();
+                        String estado = "";
+                        
+                        if (opcionEst == 1) {
+                            estado = "Para la venta";
+                        }
+                        else if (opcionEst == 2) {
+                            estado = "en revision";
+                        }
+                        else {
+                            System.out.println("Opción invalida");
+                        }
+                        
+                        VehiculoNuevo vehiculoN = new VehiculoNuevo(id, marca, modelo, color, cilindraje, num_llantas, anio, valor_compra, valor_venta, estado);
                         vehiculosNuevos.add(vehiculoN);
                     }
                     else if (opcion1 == 2) {
@@ -149,14 +184,47 @@ public class LaminautosJava {
                         double valor_comercial = Double.parseDouble(scanner.nextLine());
                         System.out.print("Valor de compra del vehiculo: ");
                         double valor_compra = Double.parseDouble(scanner.nextLine());
+                        
+                        System.out.println("- Ingresa propietario anterior -");
+                        System.out.print("Identificador del propietario: ");
+                        int identificador = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nombre: ");
+                        String nombre = scanner.nextLine();
+                        System.out.print("Numero de identificacion: ");
+                        int num_ident = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Numero de telefono: ");
+                        int num_contacto = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Direccion: ");
+                        String direccion = scanner.nextLine();
+                        Propietario propietario = new Propietario(identificador, nombre, num_ident, num_contacto, direccion);
+                        propietarios.add(propietario);
+                        
                         System.out.print("Valor de venta a clientes: ");
                         double valor_venta = Double.parseDouble(scanner.nextLine());
+                        
+                        System.out.println("- Estado del vehiculo -");
+                        System.out.println("1. Para la venta");
+                        System.out.println("2. En revision");
+                        System.out.print("Opción: ");
+                        int opcionEst = scanner.nextInt();
+                        String estado = "";
+                        
+                        if (opcionEst == 1) {
+                            estado = "Para la venta";
+                        }
+                        else if (opcionEst == 2) {
+                            estado = "En revision";
+                        }
+                        else {
+                            System.out.println("Opción invalida");
+                        }
 
-                        VehiculoUsado vehiculoU = new VehiculoUsado(id, marca, modelo, color, cilindraje, num_llantas, anio, kilometraje, siniestros, valor_comercial, valor_compra, valor_venta, "Para la venta");
+                        VehiculoUsado vehiculoU = new VehiculoUsado(id, marca, modelo, color, cilindraje, num_llantas, anio, kilometraje, siniestros, valor_comercial, valor_compra, propietario, valor_venta, estado);
                         vehiculosUsados.add(vehiculoU);
                     }
                     else if (opcion1 == 3) {
                         System.out.println("...");
+                        
                         break;                            
                     }
                     else {
@@ -168,9 +236,9 @@ public class LaminautosJava {
             else if (opcionPrincipal == 2) {
                 while(true) {
                     Menus.menuConsultaVehiculos();
-                    System.out.println("Opcion: ");
+                    System.out.print("Opcion: ");
                     int opcion2 = scanner.nextInt();
-                    
+                    scanner.nextLine();
                     if (opcion2 == 1) {
                         System.out.println("- Consultar vehiculo nuevo -");
                         System.out.print("Identificador del vehiculo: ");
@@ -200,7 +268,7 @@ public class LaminautosJava {
                             }
                         }
                         if (!encontrado) {
-                            System.out.println("El vehiculo solicitado no existe\n");
+                            System.out.println("El vehiculo solicitado no existe");
                         }
                     }
                     else if (opcion2 == 3) {
@@ -215,8 +283,9 @@ public class LaminautosJava {
             else if (opcionPrincipal == 3) {
                 while(true) {
                     Menus.menuIngresarUsuarios();
-                    System.out.println("Opcion: ");
+                    System.out.print("Opcion: ");
                     int opcion3 = scanner.nextInt();
+                    scanner.nextLine();
                     
                     if (opcion3 == 1) {
                         System.out.println("- Ingreso vendedores -");
@@ -262,6 +331,7 @@ public class LaminautosJava {
                         int num_contacto = Integer.parseInt(scanner.nextLine());
                         System.out.print("Direccion: ");
                         String direccion = scanner.nextLine();
+                        
                         System.out.println("* Seleccione especialidad del mecanico *");
                         System.out.println("1. Latonero");
                         System.out.println("2. Pintor");
@@ -298,8 +368,9 @@ public class LaminautosJava {
             else if (opcionPrincipal == 4) {
                 while(true) {
                     Menus.menuConsultaUsuarios();
-                    System.out.println("Opcion: ");
+                    System.out.print("Opcion: ");
                     int opcion4 = scanner.nextInt();
+                    scanner.nextLine();
                     
                     if (opcion4 == 1) {
                         System.out.println("- Consultar vendedor -");
@@ -350,7 +421,6 @@ public class LaminautosJava {
                                 break;
                             }
                         }
-
                         if (!encontrado) {
                             System.out.println("El cliente solicitado no existe\n");
                         }
@@ -370,7 +440,7 @@ public class LaminautosJava {
                         }
 
                         if (!encontrado) {
-                            System.out.println("El mecanico solicitado no existe\n");
+                            System.out.println("El mecanico solicitado no existe");
                         }
                     }
                     else if (opcion4 == 5) {
@@ -385,8 +455,9 @@ public class LaminautosJava {
             else if (opcionPrincipal == 5) {
                 while(true) {
                     Menus.menuVentas();
-                    System.out.println("Opcion: ");
+                    System.out.print("Opcion: ");
                     int opcion5 = scanner.nextInt();
+                    scanner.nextLine();
                     
                     if (opcion5 == 1) {
                         System.out.println("- Venta vehiculo nuevo -");
@@ -482,8 +553,9 @@ public class LaminautosJava {
             else if (opcionPrincipal == 6) {
                 while(true) {
                     Menus.menuOrdenesS();
-                    System.out.println("Opcion: ");
+                    System.out.print("Opcion: ");
                     int opcion6 = scanner.nextInt();
+                    scanner.nextLine();
                     
                     if (opcion6 == 1) {
                         System.out.println("- Crea una orden -");
@@ -519,10 +591,9 @@ public class LaminautosJava {
                                     OrdenDeServicio orden_servicio = new OrdenDeServicio(id_ord, cliente_encontrado, vehiculo_encontrado, descripcion_problema);
                                     ordenes_servicio.add(orden_servicio);
                                     System.out.println("----------------------------------------");
-                                    System.out.println("Detalles de la orden de servicio...");
+                                    System.out.println("Orden creada!");
                                     System.out.println("Cliente: " + cliente_encontrado.getNombre());
                                     System.out.println("Vehiculo: " + vehiculo_encontrado.getMarca());
-                                    orden_servicio.verOrden();
                                     System.out.println("----------------------------------------");
 
                                     // Asignar orden de servicio a un mecánico
@@ -535,15 +606,20 @@ public class LaminautosJava {
                                         }
                                     }
                                     System.out.println("----------------------------------------");
+                                    System.out.print("** Por favor ingrese identificador de la reparacion: ");
+                                    int id_rep = Integer.parseInt(scanner.nextLine());
+                                    
+                                    Reparacion reparacion = new Reparacion(id_rep, orden_servicio);
+                                    reparaciones.add(reparacion);
                                 } else {
                                     System.out.println("JMMMMMM");
                                 }
+                                } else {
+                                    System.out.println("El vehiculo no esta en el sistema, verifique");
+                                }
                             } else {
-                                System.out.println("El vehiculo no esta en el sistema, verifique");
+                                System.out.println("El cliente no está en el sistema, verifique");
                             }
-                        } else {
-                            System.out.println("El cliente no está en el sistema, verifique");
-                        }
 
                     }
                     else if (opcion6 == 2) {
@@ -571,11 +647,41 @@ public class LaminautosJava {
                     else if (opcion6 == 3) {
                         while(true) {
                             Menus.menuReparaciones();
-                            System.out.println("Opcion: ");
+                            System.out.print("Opcion: ");
                             int opcion7 = scanner.nextInt();
 
                             if (opcion7 == 1) {
-
+                                System.out.print("Ingrese identificador de la reparacion: ");
+                                int id_rep = scanner.nextInt();
+                                Reparacion reparacion_encontrada = null;
+                                for (Reparacion reparacion : reparaciones) {
+                                    if (reparacion instanceof Reparacion && reparacion.getIdReparacion() == id_rep) {
+                                        reparacion_encontrada = reparacion;
+                                        break;
+                                    }
+                                }
+                                if (reparacion_encontrada != null) {
+                                    System.out.println("----------------------------------------");
+                                    String estadoRep = "";
+                                    Random random = new Random();
+                                    int randomNum = random.nextInt(3) + 1;
+                                    if (randomNum == 1) {
+                                        estadoRep = "En reparacion";
+                                    }
+                                    else if (randomNum == 2) {
+                                        estadoRep = "En pintura";
+                                    }
+                                    else if (randomNum == 3) {
+                                        estadoRep = "Para entrega";
+                                    }
+                                    
+                                    reparacion_encontrada.calcularEstadoReparacion(estadoRep);
+                                    reparacion_encontrada.verReparacion();
+                                    System.out.println("----------------------------------------");
+                                } else {
+                                    System.out.println("La orden no está registrada en el sistema, verifique");
+                                }
+                                
                             }
                             else if (opcion7 == 2) {
                                 System.out.println("...");
@@ -595,7 +701,15 @@ public class LaminautosJava {
                     }
                 }
             }
-            scanner.close();
+            else if (opcionPrincipal == 7){
+                System.out.println("Gracias por usar nuestros servicios");
+                scanner.close();
+                break;
+            }
+            else{
+                System.out.println("Opcion invalida, intente nuevamente");
+            }
         }
     }
 }
+

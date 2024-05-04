@@ -14,13 +14,15 @@ public class Cliente extends Persona{
 
     // Constructor
     public Cliente(int id_cliente, String nombre, int num_ident, int num_contacto,String direccion, int num_vehiculos) {
-        super(id_cliente, nombre, num_ident, num_contacto, direccion);
+        super(nombre, num_ident, num_contacto, direccion);
+        this.id_cliente = id_cliente;
         this.num_vehiculos = num_vehiculos;
     }
 
     public void leerCliente() {
         System.out.println("----------------------------------------");
         System.out.println("Detalles de cliente...");
+        System.out.println("Identificador en el sistema: " + id_cliente);
         System.out.println("Nombre: " + nombre);
         System.out.println("Numero de identificacion: " + num_ident);
         System.out.println("Telefono de contacto: " + num_contacto);

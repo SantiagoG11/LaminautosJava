@@ -13,7 +13,8 @@ public class Propietario extends Persona {
 
     // Constructor
     public Propietario(int id_propietario, String nombre, int num_ident, int num_contacto, String direccion) {
-        super(id_propietario, nombre, num_ident, num_contacto, direccion);
+        super(nombre, num_ident, num_contacto, direccion);
+        this.id_propietario = id_propietario;
     }
 
     public void leerPropietario() {

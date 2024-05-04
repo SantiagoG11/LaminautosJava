@@ -34,8 +34,6 @@ public class Vehiculo {
         this.anio = anio;
         if (estadosVehiculo.contains(estado)) {
             this.estado = estado;
-        } else {
-            System.out.println("Estado no válido");
         }
     }
     

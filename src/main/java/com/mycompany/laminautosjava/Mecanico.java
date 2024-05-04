@@ -21,7 +21,8 @@ public class Mecanico extends Persona {
 
     // Constructor
     public Mecanico(int id_mecanico, String nombre, int num_ident, int num_contacto, String direccion, String especialidad, String estado) {
-        super(id_mecanico, nombre, num_ident, num_contacto, direccion);
+        super( nombre, num_ident, num_contacto, direccion);
+        this.id_mecanico = id_mecanico;
         if (especialidadesMec.contains(especialidad)) {
             this.especialidad = especialidad;
         }
@@ -43,7 +44,7 @@ public class Mecanico extends Persona {
         System.out.println("----------------------------------------");
     }
 
-   public void tomarOrdenServicio(String ordenServicio) {
+   public void tomarOrdenServicio(OrdenDeServicio ordenServicio) {
         if (this.estado.equals("Libre")) {
             // Implementación para tomar la orden de servicio
             this.estado = "Ocupado";
