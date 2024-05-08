@@ -54,14 +54,14 @@ public class LaminautosJava {
         Vehiculo vehiculo2 = new Vehiculo(102, "Renol", "Koleos", "Blanco", 2000, 4, 2022, "Optimo");
         Vehiculo vehiculo3 = new Vehiculo(103, "Mercedes", "Amg line", "Blanco", 1800, 4, 2023, "Optimo");
         
-        VehiculoNuevo vehiculoN1 = new VehiculoNuevo(50, "Mazda", "CX-30", "Gris", 2000, 4, 2024, 90000000, 95000000, "Para la venta");
-        VehiculoNuevo vehiculoN2 = new VehiculoNuevo(2, "BMW", "420-sport", "Blanco", 2500, 4, 2023, 100000000, 150000000, "Para la venta");
+        VehiculoNuevo vehiculoN1 = new VehiculoNuevo(50, "Mazda", "CX-30", "Gris", 2000, 4, 2024, 90.000000, "Para la venta");
+        VehiculoNuevo vehiculoN2 = new VehiculoNuevo(2, "BMW", "420-sport", "Blanco", 2500, 4, 2023, 100.000000, "Para la venta");
         
         Propietario propietario1 = new Propietario(15, "Gabriel Diaz", 251565, 320158634, "Cra 34#1-23");
         Propietario propietario2 = new Propietario(16, "Margarita Aguirre", 10256341, 325684172, "Calle 37#45-4");        
         
-        VehiculoUsado vehiculoU1 = new VehiculoUsado(10, "Kia", "Sportage", "Blanco mate", 2000, 4, 2015, 50000, 2, 55.000000, 56.000000, propietario1, 60.000000,"Para la venta");
-        VehiculoUsado vehiculoU2 = new VehiculoUsado(11, "Jeep", "Willys", "Rojo", 1800, 4, 2010, 90000, 1, 40.000000, 41.000000, propietario2, 48.000000,"Para la venta");
+        VehiculoUsado vehiculoU1 = new VehiculoUsado(10, "Kia", "Sportage", "Blanco mate", 2000, 4, 2015, 50000, 2, 55.500000, 56.000000, "Para la venta", propietario1);
+        VehiculoUsado vehiculoU2 = new VehiculoUsado(11, "Jeep", "Willys", "Rojo", 1800, 4, 2010, 90000, 1, 41.000000, 41.500000, "Para la venta", propietario2);
              
         Vendedor vendedor1 = new Vendedor(10, "Felipe Torres", 2514036, 304569841, "Avenida 15#43-23");
         Vendedor vendedor2 = new Vendedor(11, "Daniela Lopez", 1098229, 311828637, "Calle falsa#123");       
@@ -137,9 +137,7 @@ public class LaminautosJava {
                         int anio = Integer.parseInt(scanner.nextLine());
                         System.out.print("Valor de compra: ");
                         double valor_compra = Double.parseDouble(scanner.nextLine());
-                        System.out.print("Valor de venta a clientes: ");
-                        double valor_venta = Double.parseDouble(scanner.nextLine());
-                        
+                                               
                         System.out.println("- Estado del vehiculo -");
                         System.out.println("1. Para la venta");
                         System.out.println("2. En revision");
@@ -151,13 +149,13 @@ public class LaminautosJava {
                             estado = "Para la venta";
                         }
                         else if (opcionEst == 2) {
-                            estado = "en revision";
+                            estado = "En revision";
                         }
                         else {
                             System.out.println("Opción invalida");
                         }
                         
-                        VehiculoNuevo vehiculoN = new VehiculoNuevo(id, marca, modelo, color, cilindraje, num_llantas, anio, valor_compra, valor_venta, estado);
+                        VehiculoNuevo vehiculoN = new VehiculoNuevo(id, marca, modelo, color, cilindraje, num_llantas, anio, valor_compra, estado);
                         vehiculosNuevos.add(vehiculoN);
                     }
                     else if (opcion1 == 2) {
@@ -199,9 +197,7 @@ public class LaminautosJava {
                         Propietario propietario = new Propietario(identificador, nombre, num_ident, num_contacto, direccion);
                         propietarios.add(propietario);
                         
-                        System.out.print("Valor de venta a clientes: ");
-                        double valor_venta = Double.parseDouble(scanner.nextLine());
-                        
+                                               
                         System.out.println("- Estado del vehiculo -");
                         System.out.println("1. Para la venta");
                         System.out.println("2. En revision");
@@ -219,7 +215,7 @@ public class LaminautosJava {
                             System.out.println("Opción invalida");
                         }
 
-                        VehiculoUsado vehiculoU = new VehiculoUsado(id, marca, modelo, color, cilindraje, num_llantas, anio, kilometraje, siniestros, valor_comercial, valor_compra, propietario, valor_venta, estado);
+                        VehiculoUsado vehiculoU = new VehiculoUsado(id, marca, modelo, color, cilindraje, num_llantas, anio, kilometraje, siniestros, valor_comercial, valor_compra, estado, propietario);
                         vehiculosUsados.add(vehiculoU);
                     }
                     else if (opcion1 == 3) {
@@ -242,15 +238,16 @@ public class LaminautosJava {
                     if (opcion2 == 1) {
                         System.out.println("- Consultar vehiculo nuevo -");
                         System.out.print("Identificador del vehiculo: ");
-                        int id_vehiculo = Integer.parseInt(scanner.nextLine());
+                        int id_vehN = Integer.parseInt(scanner.nextLine());
                         boolean encontrado = false;
-                        for (VehiculoNuevo ident : vehiculosNuevos) {
-                            if (ident.getIdNuevo() == id_vehiculo) {
-                                ident.leerNuevo();
+                        for (VehiculoNuevo vehiculoN : vehiculosNuevos) {
+                            if (vehiculoN.getIdNuevo() == id_vehN) {
+                                vehiculoN.leerNuevo();
                                 encontrado = true;
                                 break;
                             }
                         }
+
                         if (!encontrado) {
                             System.out.println("El vehiculo solicitado no existe\n");
                         }
@@ -258,17 +255,17 @@ public class LaminautosJava {
                     else if (opcion2 == 2) {
                         System.out.println("- Consultar vehiculo usado -");
                         System.out.print("Identificador del vehiculo: ");
-                        int id_vehiculo = Integer.parseInt(scanner.nextLine());
+                        int id_vehU = Integer.parseInt(scanner.nextLine());
                         boolean encontrado = false;
-                        for (VehiculoUsado ident : vehiculosUsados) {
-                            if (ident.getIdUsado() == id_vehiculo) {
-                                ident.leerUsado();
+                        for (VehiculoUsado vehiculoU : vehiculosUsados) {
+                            if (vehiculoU.getIdUsado() == id_vehU) {
+                                vehiculoU.leerUsado();
                                 encontrado = true;
                                 break;
                             }
                         }
                         if (!encontrado) {
-                            System.out.println("El vehiculo solicitado no existe");
+                            System.out.println("El vehiculo solicitado no existe\n");
                         }
                     }
                     else if (opcion2 == 3) {

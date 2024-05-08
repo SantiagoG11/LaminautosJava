@@ -21,10 +21,11 @@ public class VehiculoNuevo extends Vehiculo {
     public String estado;
 
     // Constructor
-    public VehiculoNuevo(int id_nuevo, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, double valorCompra, double valorVenta, String estado) {
+    public VehiculoNuevo(int id_nuevo, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, double valorCompra, String estado) {
         super(id_nuevo, marca, modelo, color, cilindraje, num_llantas, anio, estado);
+        this.id_nuevo = id_nuevo;
         this.valorCompra = valorCompra;
-        this.valorVenta = valorVenta;
+        //this.valorVenta = valorVenta;
         if (estadosVehiculoN.contains(estado)) {
             this.estado = estado;
         }
@@ -41,7 +42,7 @@ public class VehiculoNuevo extends Vehiculo {
         System.out.println("Número de llantas: " + num_llantas);
         System.out.println("Año: " + anio);
         //System.out.println("Valor de compra: $" + valorCompra);
-        System.out.println("Valor de venta: $"+ valorVenta);
+        System.out.println("Valor de venta: $"+ calcularValorVenta());
         System.out.println("Estado: " + estado);
         System.out.println("----------------------------------------");
     }
@@ -124,7 +125,7 @@ public class VehiculoNuevo extends Vehiculo {
     }
     
     public double calcularValorVenta() {
-        double valorVenta = 1.35 * valorCompra;  // Valor de venta es 35% más del valor de compra
+        double valorVenta = 1.35 * this.valorCompra;  // Valor de venta es 35% más del valor de compra
         return valorVenta;
     }
 }
