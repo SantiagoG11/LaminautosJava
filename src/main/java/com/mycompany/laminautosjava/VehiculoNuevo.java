@@ -4,7 +4,6 @@
  */
 package com.mycompany.laminautosjava;
 
-import static com.mycompany.laminautosjava.VehiculoUsado.estadosVehiculoU;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,22 +12,16 @@ import java.util.List;
  * @author mons
  */
 public class VehiculoNuevo extends Vehiculo {
-    public static final List<String> estadosVehiculoN = Arrays.asList("Para la venta", "En revision");
-    
+        
     public int id_nuevo;
     public double valorCompra;
     public double valorVenta;
-    public String estado;
 
     // Constructor
-    public VehiculoNuevo(int id_nuevo, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, double valorCompra, String estado) {
-        super(id_nuevo, marca, modelo, color, cilindraje, num_llantas, anio, estado);
+    public VehiculoNuevo(int id_nuevo, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, double valorCompra) {
+        super(id_nuevo, marca, modelo, color, cilindraje, num_llantas, anio);
         this.id_nuevo = id_nuevo;
         this.valorCompra = valorCompra;
-        //this.valorVenta = valorVenta;
-        if (estadosVehiculoN.contains(estado)) {
-            this.estado = estado;
-        }
     }
  
 
@@ -41,9 +34,7 @@ public class VehiculoNuevo extends Vehiculo {
         System.out.println("Cilindraje: " + cilindraje);
         System.out.println("Número de llantas: " + num_llantas);
         System.out.println("Año: " + anio);
-        //System.out.println("Valor de compra: $" + valorCompra);
         System.out.println("Valor de venta: $"+ calcularValorVenta());
-        System.out.println("Estado: " + estado);
         System.out.println("----------------------------------------");
     }
 
@@ -111,19 +102,7 @@ public class VehiculoNuevo extends Vehiculo {
     public void setValorCompra(double valorCompra) {
         this.valorCompra = valorCompra;
     }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        if (estadosVehiculoN.contains(estado)) {
-            this.estado = estado;
-        } else {
-            System.out.println("Estado no válido");
-        }
-    }
-    
+   
     public double calcularValorVenta() {
         double valorVenta = 1.35 * this.valorCompra;  // Valor de venta es 35% más del valor de compra
         return valorVenta;

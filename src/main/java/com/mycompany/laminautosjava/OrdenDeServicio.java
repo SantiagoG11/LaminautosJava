@@ -10,21 +10,19 @@ package com.mycompany.laminautosjava;
  */
 public class OrdenDeServicio {
     public int id_orden;
-    public Cliente cliente;
-    public Vehiculo vehiculo;
+    public VehiculoReparacion vehiculoR;
     public String descripcion_problema;
 
     // Constructor
-    public OrdenDeServicio(int id_orden, Cliente cliente, Vehiculo vehiculo, String descripcion_problema) {
+    public OrdenDeServicio(int id_orden, VehiculoReparacion vehiculoR, String descripcion_problema) {
         this.id_orden = id_orden;
-        this.cliente = cliente;
-        this.vehiculo = vehiculo;
+        this.vehiculoR = vehiculoR;
         this.descripcion_problema = descripcion_problema;
     }
 
     public void verOrden() {
-        System.out.println("Cliente: " + cliente.getNombre());
-        System.out.println("Vehículo: " + vehiculo.getModelo());
+        System.out.println("Cliente: " + vehiculoR.getCliente().getNombre());
+        System.out.println("Vehículo: " + vehiculoR.getModelo());
         System.out.println("Descripción del problema: " + descripcion_problema);
     }
 
@@ -37,20 +35,12 @@ public class OrdenDeServicio {
         this.id_orden = id_orden;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public VehiculoReparacion getVehiculoR() {
+        return vehiculoR;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Vehiculo getVehiculo() {
-        return vehiculo;
-    }
-
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setVehiculoR(VehiculoReparacion vehiculoR) {
+        this.vehiculoR = vehiculoR;
     }
 
     public String getDescripcionProblema() {

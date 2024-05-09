@@ -25,7 +25,6 @@ public class Reparacion {
         
     }
     
-   
     public String calcularEstadoReparacion(String reparacion) {
         this.estado_reparacion = reparacion;
         if (estado_reparacion.equals("Para entrega")) {
@@ -42,8 +41,8 @@ public class Reparacion {
     public void verReparacion() {
         System.out.println("Estado de reparacion");
         System.out.println("Identificador de la orden: " + orden_servicio.getIdOrden());
-        System.out.println("Cliente: " + orden_servicio.getCliente().nombre);
-        System.out.println("Vehiculo: " + orden_servicio.getVehiculo().marca);
+        System.out.println("Cliente: " + orden_servicio.getVehiculoR().getCliente().nombre);
+        System.out.println("Vehiculo: " + orden_servicio.getVehiculoR().marca);
         System.out.println("Estado: " + estado_reparacion);
     }
     
@@ -56,33 +55,5 @@ public class Reparacion {
     public void setIdReparacion(int id_reparacion) {
         this.id_reparacion = id_reparacion;
     }
-    /*
-    public int getIdVehiculo() {
-        return id_vehiculo;
-    }
     
-    public void setIdVehiculo(int id_vehiculo) {
-        this.id_vehiculo = id_vehiculo;
-    }
-
-   public int getIdMecanico() {
-        return id_mecanico;
-    }
-
-    public void setIdMecanico(int id_mecanico) {
-        this.id_mecanico =id_mecanico;
-    }
-    
-    public String getEstado() {
-        return estado_reparacion;
-    }
-
-    public void setEstado(String estado_reparacion) {
-        if (estadosReparacion.contains(estado_reparacion)) {
-            this.estado_reparacion = estado_reparacion;
-        } else {
-            System.out.println("Estado no válido");
-        }
-    }
-    */
 }

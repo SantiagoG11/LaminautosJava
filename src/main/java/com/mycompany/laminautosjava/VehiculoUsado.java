@@ -13,30 +13,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class VehiculoUsado extends Vehiculo {
-    public static final List<String> estadosVehiculoU = Arrays.asList("Para la venta", "En revision");
-
+    
     public int id_usado;
     public int kilometraje;
     public int siniestros;
     public double valorComercial;
     public double valorCompra;
     public Propietario propietario;
-    //public double valorVenta = calcularValorVenta();
-    public String estado;
+    
 
     // Constructor
-    public VehiculoUsado(int id_usado, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, int kilometraje, int siniestros, double valorComercial, double valorCompra, String estado, Propietario propietario) {
-        super(id_usado, marca, modelo, color, cilindraje, num_llantas, anio, estado);
+    public VehiculoUsado(int id_usado, String marca, String modelo, String color, int cilindraje, int num_llantas, int anio, int kilometraje, int siniestros, double valorComercial, double valorCompra, Propietario propietario) {
+        super(id_usado, marca, modelo, color, cilindraje, num_llantas, anio);
         this.id_usado = id_usado;
         this.kilometraje = kilometraje;
         this.siniestros = siniestros;
         this.valorComercial = valorComercial;
         this.valorCompra = valorCompra;
         this.propietario = propietario;
-        //this.valorVenta = valorVenta;
-        if (estadosVehiculoU.contains(estado)) {
-            this.estado = estado;
-        }
     }
 
     public void leerUsado() {
@@ -52,7 +46,6 @@ public class VehiculoUsado extends Vehiculo {
         System.out.println("Siniestros: " + siniestros);
         System.out.println("Valor de venta: $" + calcularValorVenta());
         System.out.println("Propietario anterior: " +  propietario.getNombre());
-        System.out.println("Estado: " + estado);
         System.out.println("----------------------------------------");
     }
 
@@ -168,11 +161,4 @@ public class VehiculoUsado extends Vehiculo {
         return estado;
     }
 
-    public void setEstado(String estado) {
-        if (estadosVehiculoU.contains(estado)) {
-            this.estado = estado;
-        } else {
-            System.out.println("Estado no válido");
-        }
-    }
 }

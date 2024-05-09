@@ -54,9 +54,8 @@ public class Menus {
 
     public static void menuVentas() {
         System.out.println("- Ventas -");
-        System.out.println("1. Vender vehiculo nuevo");
-        System.out.println("2. Vender vehiculo usado");
-        System.out.println("3. Volver");
+        System.out.println("1. Realiza transaccion");
+        System.out.println("2. Volver");
     }
     
     public static void menuOrdenesS() {
@@ -65,6 +64,13 @@ public class Menus {
         System.out.println("2. Ver orden");
         System.out.println("3. Consultar reparaciones");
         System.out.println("4. Volver");
+    }
+    
+    public static void menuCreaOrden() {
+        System.out.println("- Crea una orden de servicio -");
+        System.out.println("1. Registrar nuevo vehiculo a reparacion");
+        System.out.println("2. Buscar vehiculo en el sistema");
+        System.out.println("3. Volver");
     }
 
     public static void menuReparaciones() {
