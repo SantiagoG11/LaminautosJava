@@ -35,20 +35,24 @@ public class VehiculoUsado extends Vehiculo {
 
     public void leerUsado() {
         System.out.println("----------------------------------------");
-        System.out.println("Detalles del automóvil...");
+        System.out.println("Detalles del automovil...");
         System.out.println("Marca: " + marca);
         System.out.println("Modelo: " + modelo);
         System.out.println("Color: " + color);
         System.out.println("Cilindraje: " + cilindraje);
-        System.out.println("Número de llantas: " + num_llantas);
-        System.out.println("Año: " + anio);
+        System.out.println("Numero de llantas: " + num_llantas);
+        System.out.println("Anio: " + anio);
         System.out.println("Kilometraje: " + kilometraje);
         System.out.println("Siniestros: " + siniestros);
-        System.out.println("Valor de venta: $" + calcularValorVenta());
+        System.out.println("Valor de venta: $" + imprimirmiles(calcularValorVenta()));
         System.out.println("Propietario anterior: " +  propietario.getNombre());
         System.out.println("----------------------------------------");
     }
 
+    public static String imprimirmiles(double numero) {
+    return String.format("%,.2f", numero).replace(",", ".");
+    }
+    
     public double calcularValorVenta() {
         double valorVenta = 1.35 *  this.valorCompra;
 
