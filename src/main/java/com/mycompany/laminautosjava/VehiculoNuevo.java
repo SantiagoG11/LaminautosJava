@@ -27,17 +27,21 @@ public class VehiculoNuevo extends Vehiculo {
 
     public void leerNuevo() {
         System.out.println("----------------------------------------");
-        System.out.println("Detalles del automóvil...");
+        System.out.println("Detalles del automovil...");
         System.out.println("Marca: " + marca);
         System.out.println("Modelo: " + modelo);
         System.out.println("Color: " + color);
         System.out.println("Cilindraje: " + cilindraje);
-        System.out.println("Número de llantas: " + num_llantas);
-        System.out.println("Año: " + anio);
-        System.out.println("Valor de venta: $"+ calcularValorVenta());
+        System.out.println("Numero de llantas: " + num_llantas);
+        System.out.println("Anio: " + anio);
+        System.out.println("Valor de venta: $" + imprimirmiles(calcularValorVenta()));
         System.out.println("----------------------------------------");
     }
 
+    public static String imprimirmiles(double numero) {
+    return String.format("%,.2f", numero).replace(",", ".");
+    }
+    
     // Getters y setters
     public int getIdNuevo() {
         return id_nuevo;
