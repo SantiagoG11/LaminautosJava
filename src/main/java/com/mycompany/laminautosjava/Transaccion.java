@@ -43,11 +43,21 @@ public class Transaccion {
     public void verTransaccionU() {
         System.out.println("----------------------------------------");
         System.out.println("Detalles de transaccion.");
-        System.out.println("Identificacion de la transaccion: " + id_transaccion);
+        System.out.println("Identificacion: " + id_transaccion);
         System.out.println("Vendedor: " + vendedor.getNombre());
         System.out.println("Vehiculo: " + vehiculoU.getMarca());
         System.out.println("Venta: $" + vehiculoU.calcularValorVenta());
         System.out.println("----------------------------------------");
+    }
+    
+    // Método para verificar si la transacción es con un vehículo nuevo
+    public boolean esNuevo() {
+        return vehiculoN != null;
+    }
+
+    // Método para verificar si la transacción es con un vehículo usado
+    public boolean esUsado() {
+        return vehiculoU != null;
     }
     
     // Getters y setters

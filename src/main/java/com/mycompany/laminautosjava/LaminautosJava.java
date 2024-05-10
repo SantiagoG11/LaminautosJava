@@ -69,6 +69,8 @@ public class LaminautosJava {
         Vendedor vendedor1 = new Vendedor(10, "Felipe Torres", 2514036, 304569841, "Avenida 15#43-23");
         Vendedor vendedor2 = new Vendedor(11, "Daniela Lopez", 1098229, 311828637, "Calle falsa#123");     
         
+        Transaccion transaccion1 = new Transaccion(201, vendedor1, vehiculoN1);
+        Transaccion transaccion2 = new Transaccion(202, vendedor2, vehiculoU2);
                      
         Mecanico mecanico1 = new Mecanico(1, "Donchi", 2641562, 321458614, "Hotel Karras", "Latonero", "Libre");
         Mecanico mecanico2 = new Mecanico(2, "Armando Casas", 25478115, 313589255, "Avenida caracas 50-23", "Pintor", "Libre");
@@ -93,6 +95,8 @@ public class LaminautosJava {
         vehiculosUsados.add(vehiculoU2);
         vendedores.add(vendedor1);
         vendedores.add(vendedor2);
+        transacciones.add(transaccion1);
+        transacciones.add(transaccion2);
         propietarios.add(propietario1);
         propietarios.add(propietario2);
         mecanicos.add(mecanico1);
@@ -430,8 +434,6 @@ public class LaminautosJava {
                     
                     if (opcion5 == 1) {
                         System.out.println("- Venta -");
-                        System.out.print("Identificador de la transaccion: ");
-                        int id_tran = Integer.parseInt(scanner.nextLine());
                         System.out.print("Identificador vendedor: ");
                         int id_ven = Integer.parseInt(scanner.nextLine());
                         System.out.print("Cuantos vehiculos va a vender:  ");
@@ -464,15 +466,16 @@ public class LaminautosJava {
                                     }
 
                                     if (vehiculoN_encontrado != null) {
+                                        System.out.print("Identificador de la transaccion: ");
+                                        int id_tran = Integer.parseInt(scanner.nextLine());
                                         Transaccion transaccion = new Transaccion(id_tran, vendedor_encontrado, vehiculoN_encontrado);
                                         transacciones.add(transaccion);
-                                        System.out.println("Transacción creada!");
-                                        transaccion.verTransaccionN();
                                         
                                         double comision = vendedor_encontrado.calcularComision(vehiculoN_encontrado);
                                         System.out.println("+ Vendedor " + vendedor_encontrado.getNombre() + " con identificacion " + vendedor_encontrado.getNumIdent());
                                         System.out.println("Valor de comision: $" + comision);
                                         System.out.println("----------------------------------------");
+                                        System.out.println("Transacción creada!");                                        
                                          
                                     } else {
                                         System.out.println("El vehiculo no está en el sistema, verifique");
@@ -503,10 +506,10 @@ public class LaminautosJava {
                                     }
 
                                     if (vehiculoU_encontrado != null) {
+                                        System.out.print("Identificador de la transaccion: ");
+                                        int id_tran = Integer.parseInt(scanner.nextLine());
                                         Transaccion transaccion = new Transaccion(id_tran, vendedor_encontrado, vehiculoU_encontrado);
-                                        transacciones.add(transaccion);
-                                        System.out.println("Transacción creada!");
-                                        transaccion.verTransaccionU();
+                                        transacciones.add(transaccion);                                        
                                         
                                         double comision = vendedor_encontrado.calcularComision(vehiculoU_encontrado);
                                         System.out.println("+ Vendedor " + vendedor_encontrado.getNombre() + " con identificacion " + vendedor_encontrado.getNumIdent());
@@ -516,6 +519,7 @@ public class LaminautosJava {
                                             System.out.println("Valor de comision: $" + comision);
                                             System.out.println("----------------------------------------");
                                         }
+                                        System.out.println("Transacción creada!");
                                         
                                     } else {
                                         System.out.println("El vehiculo no está en el sistema, verifique");
@@ -528,6 +532,28 @@ public class LaminautosJava {
 
                     }
                     else if (opcion5 == 2) {
+                        System.out.println("- Buscar transaccion -");
+                        System.out.print("Identificador de transaccion: ");
+                        int id_tran = Integer.parseInt(scanner.nextLine());
+                        boolean encontrado = false;
+
+                        for (Transaccion transaccion : transacciones) {
+                            if (transaccion.getIdTransaccion() == id_tran) {
+                                if (transaccion.esNuevo() && transaccion.getVehiculoN() != null) {
+                                    transaccion.verTransaccionN(); // Se encontró la transacción con vehículo nuevo
+                                } else if (transaccion.esUsado() && transaccion.getVehiculoU() != null) {
+                                    transaccion.verTransaccionU(); // Se encontró la transacción con vehículo usado
+                                }
+                                encontrado = true;
+                                break;
+                            }
+                        }
+
+                        if (!encontrado) {
+                            System.out.println("El vendedor solicitado no existe\n");
+                        }
+                    }
+                    else if (opcion5 == 3) {
                         System.out.println("...");
                         break;
                     }

@@ -55,7 +55,8 @@ public class Menus {
     public static void menuVentas() {
         System.out.println("- Ventas -");
         System.out.println("1. Realiza transaccion");
-        System.out.println("2. Volver");
+        System.out.println("2. Ver transaccion");
+        System.out.println("3. Volver");
     }
     
     public static void menuOrdenesS() {
