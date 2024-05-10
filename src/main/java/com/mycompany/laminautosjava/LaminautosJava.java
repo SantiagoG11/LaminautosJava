@@ -57,14 +57,14 @@ public class LaminautosJava {
         VehiculoReparacion vehiculoR2 = new VehiculoReparacion(102, "Renol", "Koleos", "Blanco", 2000, 4, 2022, cliente1);
         VehiculoReparacion vehiculoR3 = new VehiculoReparacion(103, "Mercedes", "Amg line", "Gris", 1800, 4, 2023, cliente2);
         
-        VehiculoNuevo vehiculoN1 = new VehiculoNuevo(50, "Mazda", "CX-30", "Gris", 2000, 4, 2024, 90.000000);
-        VehiculoNuevo vehiculoN2 = new VehiculoNuevo(2, "BMW", "420-sport", "Blanco", 2500, 4, 2023, 100.000000);
+        VehiculoNuevo vehiculoN1 = new VehiculoNuevo(50, "Mazda", "CX-30", "Gris", 2000, 4, 2024, 90000000);
+        VehiculoNuevo vehiculoN2 = new VehiculoNuevo(2, "BMW", "420-sport", "Blanco", 2500, 4, 2023, 100000000);
         
         Propietario propietario1 = new Propietario(15, "Gabriel Diaz", 251565, 320158634, "Cra 34#1-23");
         Propietario propietario2 = new Propietario(16, "Margarita Aguirre", 10256341, 325684172, "Calle 37#45-4");        
         
-        VehiculoUsado vehiculoU1 = new VehiculoUsado(10, "Kia", "Sportage", "Blanco mate", 2000, 4, 2015, 50000, 2, 55.500000, 56.000000, propietario1);
-        VehiculoUsado vehiculoU2 = new VehiculoUsado(11, "Jeep", "Willys", "Rojo", 1800, 4, 2010, 90000, 1, 41.000000, 41.500000, propietario2);
+        VehiculoUsado vehiculoU1 = new VehiculoUsado(10, "Kia", "Sportage", "Blanco mate", 2000, 4, 2015, 50000, 2, 55500000, 56000000, propietario1);
+        VehiculoUsado vehiculoU2 = new VehiculoUsado(11, "Jeep", "Willys", "Rojo", 1800, 4, 2010, 90000, 1, 41000000, 41500000, propietario2);
              
         Vendedor vendedor1 = new Vendedor(10, "Felipe Torres", 2514036, 304569841, "Avenida 15#43-23");
         Vendedor vendedor2 = new Vendedor(11, "Daniela Lopez", 1098229, 311828637, "Calle falsa#123");     
@@ -123,13 +123,12 @@ public class LaminautosJava {
             int opcionPrincipal = scanner.nextInt();
             scanner.nextLine(); // Consumir el carácter de nueva línea
             if (opcionPrincipal == 1) {
-                while(true) {
+                OUTER:
+                while (true) {
                     Menus.menuIngresarVehiculos();
                     System.out.print("Opcion: ");
-                    
                     int opcion1 = scanner.nextInt();
                     scanner.nextLine();
-                    
                     if (opcion1 == 1) {
                         System.out.println("- Ingreso vehiculo nuevo -");
                         System.out.print("Identificador del vehiculo: ");
@@ -142,17 +141,43 @@ public class LaminautosJava {
                         String color = scanner.nextLine();
                         System.out.print("Cilindraje del vehiculo: ");
                         int cilindraje = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Numero de llantas: ");
-                        int num_llantas = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Año del vehiculo: ");
+                        int opcion;
+                        do{
+                            System.out.print("Es una motocicleta o un automovil? (Ingrese 1 para moto o 2 para auto): ");
+                            opcion = Integer.parseInt(scanner.nextLine());
+                        } while (opcion < 1 || opcion > 2);
+                        int num_llantas;
+                        switch (opcion) {
+                            case 1 -> {
+                                do {
+                                    System.out.print("Numero de llantas (debe estar entre 2 y 4): ");
+                                    num_llantas = Integer.parseInt(scanner.nextLine());
+                                    if (num_llantas < 2 || num_llantas > 4) {
+                                        System.out.println("El numero de llantas para una motocicleta debe estar entre 2 y 4.");
+                                    }
+                                } while (num_llantas < 2 || num_llantas > 4);
+                            }
+                            case 2 -> {
+                                do {
+                                    System.out.print("Numero de llantas (debe estar entre 4 y 6): ");
+                                    num_llantas = Integer.parseInt(scanner.nextLine());
+                                    if (num_llantas < 4 || num_llantas > 6) {
+                                        System.out.println("El numero de llantas para un automovil debe estar entre 4 y 6.");
+                                    }
+                                } while (num_llantas < 4 || num_llantas > 6);
+                            }
+                            default -> {
+                                System.out.println("Opcion no valida");
+                                break OUTER;
+                            }
+                        }
+                        System.out.print("Anio del vehiculo: ");
                         int anio = Integer.parseInt(scanner.nextLine());
                         System.out.print("Valor de compra: ");
-                        double valor_compra = Double.parseDouble(scanner.nextLine());                   
-                          
+                        double valor_compra = Double.parseDouble(scanner.nextLine());
                         VehiculoNuevo vehiculoN = new VehiculoNuevo(id, marca, modelo, color, cilindraje, num_llantas, anio, valor_compra);
                         vehiculosNuevos.add(vehiculoN);
-                    }
-                    else if (opcion1 == 2) {
+                    } else if (opcion1 == 2) {
                         System.out.println("- Ingreso vehiculo usado -");
                         System.out.print("Identificador del vehiculo: ");
                         int id = Integer.parseInt(scanner.nextLine());
@@ -164,9 +189,37 @@ public class LaminautosJava {
                         String color = scanner.nextLine();
                         System.out.print("Cilindraje del vehiculo: ");
                         int cilindraje = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Numero de llantas: ");
-                        int num_llantas = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Año del vehiculo: ");
+                        int opcion;
+                        do{
+                            System.out.print("Es una motocicleta o un automovil? (Ingrese 1 para moto o 2 para auto): ");
+                            opcion = Integer.parseInt(scanner.nextLine());
+                        } while (opcion < 1 || opcion > 2);
+                        int num_llantas;
+                        switch (opcion) {
+                            case 1 -> {
+                                do {
+                                    System.out.print("Numero de llantas (debe estar entre 2 y 4): ");
+                                    num_llantas = Integer.parseInt(scanner.nextLine());
+                                    if (num_llantas < 2 || num_llantas > 4) {
+                                        System.out.println("El numero de llantas para una motocicleta debe estar entre 2 y 4.");
+                                    }
+                                } while (num_llantas < 2 || num_llantas > 4);
+                            }
+                            case 2 -> {
+                                do {
+                                    System.out.print("Numero de llantas (debe estar entre 4 y 6): ");
+                                    num_llantas = Integer.parseInt(scanner.nextLine());
+                                    if (num_llantas < 4 || num_llantas > 6) {
+                                        System.out.println("El numero de llantas para un automovil debe estar entre 4 y 6.");
+                                    }
+                                } while (num_llantas < 4 || num_llantas > 6);
+                            }
+                            default -> {
+                                System.out.println("Opcion no valida");
+                                break OUTER;
+                            }
+                        }
+                        System.out.print("Anio del vehiculo: ");
                         int anio = Integer.parseInt(scanner.nextLine());
                         System.out.print("Kilometraje del vehiculo: ");
                         int kilometraje = Integer.parseInt(scanner.nextLine());
@@ -202,7 +255,6 @@ public class LaminautosJava {
                     else {
                         System.out.println("Opcion invalida, intente nuevamente");
                     }
-                    //break;
                 }
             }
             else if (opcionPrincipal == 2) {
@@ -445,7 +497,7 @@ public class LaminautosJava {
                             System.out.print("Opcion: ");
                             int opc = Integer.parseInt(scanner.nextLine());
                             if (opc == 1) {
-                                System.out.print("Identificador del vehiculo nuevo que será vendido: ");
+                                System.out.print("Identificador del vehiculo nuevo que sera vendido: ");
                                 int id_vehN = Integer.parseInt(scanner.nextLine());
                                 Vendedor vendedor_encontrado = null;
                                 VehiculoNuevo vehiculoN_encontrado = null;
@@ -485,7 +537,7 @@ public class LaminautosJava {
                                 }
                             }
                             else if (opc == 2) {
-                                System.out.print("Identificador del vehiculo usado que será vendido: ");
+                                System.out.print("Identificador del vehiculo usado que sera vendido: ");
                                 int id_vehU = Integer.parseInt(scanner.nextLine());
                                 Vendedor vendedor_encontrado = null;
                                 VehiculoUsado vehiculoU_encontrado = null;
@@ -682,7 +734,7 @@ public class LaminautosJava {
                                             boolean asignar = asignarOrdenServicioMecanico(orden_servicio, mecanicos);
 
                                             if (asignar) {
-                                                System.out.println("\nEstado actual de los mecánicos:");
+                                                System.out.println("\nEstado actual de los mecanicos:");
                                                 for (Mecanico mecanico : mecanicos) {
                                                     System.out.println(mecanico.getNombre() + ": " + mecanico.getEstado());
                                                 }
@@ -732,7 +784,7 @@ public class LaminautosJava {
                                         boolean asignar = asignarOrdenServicioMecanico(orden_servicio, mecanicos);
 
                                         if (asignar) {
-                                            System.out.println("\nEstado actual de los mecánicos:");
+                                            System.out.println("\nEstado actual de los mecanicos:");
                                             for (Mecanico mecanico : mecanicos) {
                                                 System.out.println(mecanico.getNombre() + ": " + mecanico.getEstado());
                                             }
